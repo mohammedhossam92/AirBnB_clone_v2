@@ -1,6 +1,0 @@
-#!/usr/bin/bash
-
-git add .
-read -p "enter ur commit message: " message
-git commit -m "$message"
-git push
