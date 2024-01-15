@@ -4,10 +4,22 @@ import unittest
 from models.base_model import BaseModel
 from models import storage
 import os
+# from models.engine.file_storage import FileStorage
 
 
-class test_fileStorage(unittest.TestCase):
+class TestFileStorage(unittest.TestCase):
     """ Class to test the file storage method """
+
+    # def test_file_path(self):
+    #
+    #     storage_obj = FileStorage()
+    #     # Check that the __file_path variable is a string
+    #     self.assertIsInstance(FileStorage.__file_path, str)
+    #     # Check that the __file_path variable matches the expected file name
+    #     self.assertEqual(storage_obj.__file_path, "file.json")
+    #     # Check that the file.json file exists after calling the save method
+    #     storage_obj.save()
+    #     self.assertTrue(os.path.exists(storage.__file_path))
 
     def setUp(self):
         """ Set up test environment """
@@ -21,7 +33,7 @@ class test_fileStorage(unittest.TestCase):
         """ Remove storage file at end of tests """
         try:
             os.remove('file.json')
-        except:
+        except FileNotFoundError:
             pass
 
     def test_obj_list_empty(self):
@@ -107,3 +119,7 @@ class test_fileStorage(unittest.TestCase):
         from models.engine.file_storage import FileStorage
         print(type(storage))
         self.assertEqual(type(storage), FileStorage)
+
+
+if __name__ == "__main":
+    unittest.main()
